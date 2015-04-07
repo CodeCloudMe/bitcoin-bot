@@ -1,0 +1,124 @@
+<html>
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+
+<script>
+
+
+$(window).load(init);
+
+function init(){
+	 getData();
+	//getChart();
+}
+
+
+function getData(){
+
+	$.getJSON('http://btcrecords-coinparty1.rhcloud.com/cloud/models/btc/bfChart.php', function(resp){
+
+		allPrices = [];
+		allBids = [];
+		allAsks=[];
+		resp.reverse();
+
+		startTime = new Date(resp[0]['timestamp']).getTime();
+
+
+		for (i in resp){
+
+			allPrices.push([new Date(resp[i]['timestamp']).getTime(), parseFloat(resp[i]['price'])]);
+			allBids.push([new Date(resp[i]['timestamp']).getTime(), parseFloat(resp[i]['bid'])]);
+			allAsks.push([new Date(resp[i]['timestamp']).getTime(), parseFloat(resp[i]['ask'])]);
+
+		}
+
+		getChart(allPrices, allBids, allAsks);
+	})
+}
+
+
+function  getChart(prices, bidPrices1, askPrices1 ) {
+    $('#container').highcharts({
+        chart: {
+            type: 'spline',
+            zoomType:'x'
+        },
+        title: {
+            text: 'Bitfinix prices'
+        },
+        subtitle: {
+            text: 'Yup'
+        },
+        xAxis: {
+            type: 'datetime',
+           /* labels: {
+                overflow: 'justify'
+            }*/
+        },
+        yAxis: {
+            title: {
+                text: 'price'
+            },
+            //min: 0,
+           // minorGridLineWidth: 0,
+           // gridLineWidth: 0,
+            alternateGridColor: null,
+          
+        },
+        tooltip: {
+            valueSuffix: ' $'
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 1,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: true
+                },
+                //pointInterval: (1000* 60),
+               // pointStart: startTimestamp
+            }
+        },
+        series: [{
+            name: 'Bitfinex',
+            data: prices
+
+        },
+        {
+            name: 'BF Ask',
+            data: askPrices1
+
+        },
+        {
+            name: 'BF Bids',
+            data: bidPrices1
+
+        }
+
+        //add another here {name: 'ddd', data:lah}
+
+        ],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    });
+};
+
+</script>
+
+</html>

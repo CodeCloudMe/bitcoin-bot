@@ -1,0 +1,1 @@
+wget --quiet -O - 'https://btcrecordz-bitrader.rhcloud.com/cloud/models/btc/getLatestPricesBitfinexOrderbook2.php'
