@@ -1,9 +1,9 @@
 <?php
 //your username here for MYSQL
-$username= "adminNdIUjFP";
+$username= "adminllTANJS";
 
 //your password here for MYSQL
-$dbPassword = "_YYu3gK6jrPX";
+$dbPassword = "P6Q1V-Tjd2jb";
 
 //keep database as BTC
 $database= "bitcoinbot";
