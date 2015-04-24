@@ -5,37 +5,27 @@
 	
 
 	ini_set('display_errors',1);  error_reporting(E_ALL); 
-	
+
 
 	$resp = getPrices();
 
 
 	echo(json_encode($resp));
 
-
-
-
 	//prop
-
-	function getPrices(){
 	
-			//echo($theDate);
-			//echo("http://www.quandl.com/api/v1/datasets/BITCOIN/BITSTAMPUSD?auth_token=6sQU_EYPwHRMkJsReFG9");
-			$info = file_get_contents("https://www.bitstamp.net/api/ticker/");
-			$tInfo = json_decode($info, true);
+	function getPrices(){
+			$info = file_get_contents("https://www.okcoin.com/api/v1/ticker.do?symbol=btc_usd");
+			$tInfo = json_decode($info, true)['ticker'];
 
 			$price = $tInfo['last'];
-			$ask = $tInfo['ask'];
-			$bid = $tInfo['bid'];
-			$volume = $tInfo['volume'];
+			$ask = $tInfo['sell'];
+			$bid = $tInfo['buy'];
+			$volume = $tInfo['vol'];
 
-
-		
-			dbQuery("INSERT INTO bitstampPrices (price, bid, ask, volume) VALUES ($price, $bid, $ask, $volume)");
-				
-			echo("INSERT INTO bitstampPrices (price, bid, ask, volume) VALUES ($price, $bid, $ask, $volume)");
-				
-		
+			dbQuery("INSERT INTO okcoinPrices (price, ask, bid, volume) VALUES ($price, $ask, $bid, $volume)");
+			echo("INSERT INTO okcoinPrices (price, ask, bid, volume) VALUES ($price, $ask, $bid, $volume)");
+		//return true  
 		return $tInfo;
 	}
 

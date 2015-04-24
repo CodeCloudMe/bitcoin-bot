@@ -25,16 +25,11 @@ function getData(){
 
 	$.getJSON('/cloud/models/btc/bfChart.php', function(resp){
 
-		allPrices = [];
+                allPrices = [];
 		allBids = [];
 		allAsks=[];
 
-        allPrices1 = [];
-        allBids1 = [];
-        allAsks1=[];
-
         resp[0].reverse();
-        resp[1].reverse();
 
 
 		//resp.reverse();
@@ -50,27 +45,19 @@ function getData(){
 
 		}
 
-            for (i in resp[1]){
-
-            allPrices1.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['price'])]);
-            allBids1.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['bid'])]);
-            allAsks1.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['ask'])]);
-
-        }
-
-		getChart(allPrices, allBids, allAsks, allPrices1, allBids1, allAsks1);
+		getChart(allPrices, allBids, allAsks);
 	})
 }
 
 
-function  getChart(prices, bidPrices1, askPrices1, prices2, bidPrices2, askPrices2 ) {
+function  getChart(prices, bidPrices, askPrices) {
     $('#container').highcharts({
         chart: {
             type: 'spline',
             zoomType:'x'
         },
         title: {
-            text: 'Bitfinix prices'
+            text: 'Okcoin  prices'
         },
         subtitle: {
             text: 'Yup'
@@ -110,38 +97,20 @@ function  getChart(prices, bidPrices1, askPrices1, prices2, bidPrices2, askPrice
             }
         },
         series: [{
-            name: 'Bitfinex',
+            name: 'Okcoin',
             data: prices
 
         },
        /* {
-            name: 'BF Ask',
-            data: askPrices1
+            name: 'Okcoin Ask',
+            data: askPrices
 
         },
         {
-            name: 'BF Bids',
-            data: bidPrices1
+            name: 'Okcoin Bids',
+            data: bidPrices
 
         },*/
-
-
-
-        {
-            name: 'Bitstamp',
-            data: prices2
-
-        },
-        /*{
-            name: 'Bitstamp Ask',
-            data: askPrices2
-
-        },
-        {
-            name: 'Bitstamp Bids',
-            data: bidPrices2
-
-        }*/
 
         //add another here {name: 'ddd', data:lah}
 

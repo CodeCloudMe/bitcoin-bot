@@ -22,11 +22,9 @@
 
 		
 		
-		$resp = dbMassData("SELECT * FROM bitfinix ORDER BY timestamp DESC");
-		$resp1 = dbMassData("SELECT * FROM bitstampPrices ORDER BY timestamp DESC");
+		$resp = dbMassData("SELECT * FROM okcoinPrices ORDER BY timestamp DESC");
 		$allResp = array();
 		$allResp[0] =  $resp;
-		$allResp[1]= $resp1;
 
 		return $allResp;
 	}
