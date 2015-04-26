@@ -17,7 +17,7 @@
 	function getBook(){
 		$info = file_get_contents("https://www.okcoin.com/api/v1/depth.do?symbol=btc_usd");
 		$tInfo = json_decode($info, true);
-		for($i=0; $i < count($tInfo['asks']) ; $i++)){
+		for($i=0; $i < count($tInfo['asks']); $i++){
         try{
             $ask = $tInfo['asks'][$i][0]; 	 
             $bid = $tInfo['bids'][$i][0];
