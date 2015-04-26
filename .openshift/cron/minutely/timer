@@ -1,1 +1,2 @@
 wget --quiet -O - 'http://bitcoinbot-chee.rhcloud.com/cloud/models/btc/getLatestPrices.php';
+wget --quiet -O - 'http://bitcoinbot-chee.rhcloud.com/cloud/models/btc/getBook.php';

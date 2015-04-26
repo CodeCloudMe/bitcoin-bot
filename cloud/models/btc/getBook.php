@@ -19,9 +19,6 @@
 		$tInfo = json_decode($info, true);
 		for($i=0; $i < count($tInfo['asks']); $i++){
         try{
-            $ask = $tInfo['asks'][$i][0]; 	 
-            $bid = $tInfo['bids'][$i][0];
-
             $askAmount = $tInfo['asks'][$i][1]; 	 
             $bidAmount = $tInfo['bids'][$i][1];
 
