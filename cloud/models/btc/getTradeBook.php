@@ -22,8 +22,8 @@
             $tid = strval($tInfo[$i]['tid']);
 
         
-        dbQuery("INSERT INTO okcoinTradeBook(price, amount, type, transactionId) VALUES ($amount, $price, $type, $tid");
-        echo(dbQuery("INSERT INTO okcoinTradeBook(amount, price, type, transactionId) VALUES ($amount, $price, $type, $tid)"));
+        dbQuery("INSERT INTO okcoinTradeBook(price, amount, type, transactionId) VALUES ($amount, $price, $type");
+        echo(dbQuery("INSERT INTO okcoinTradeBook(amount, price, type, transactionId) VALUES ($amount, $price, $type)"));
 		}
 		return $tInfo;
 	}
