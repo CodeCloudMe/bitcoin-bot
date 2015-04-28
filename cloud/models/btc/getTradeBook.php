@@ -21,7 +21,7 @@
             $type = $tInfo[$i]['type'];
 
         
-        dbQuery("INSERT INTO okcoinTradeBook(price, amount, type) VALUES ($amount, $price, $type");
+        dbQuery("INSERT INTO okcoinTradeBook(amount, price, type) VALUES ($amount, $price, $type)");
         echo(dbQuery("INSERT INTO okcoinTradeBook(amount, price, type) VALUES ($amount, $price, $type)"));
 		}
 		return $tInfo;
