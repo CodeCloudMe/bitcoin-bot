@@ -19,11 +19,11 @@
             $amount = $tInfo[$i]['amount'];
             $price = $tInfo[$i]['price'];
             $type = $tInfo[$i]['type'];
-            $tid = $tInfo[$i]['tid'];
+            $tid = strval($tInfo[$i]['tid']);
 
         
-        dbQuery("INSERT INTO okcoinTradeBook(price, amount, type, transactionId) VALUES ($amount, $price, $type, strval($tid))");
-        echo(dbQuery("INSERT INTO okcoinTradeBook(amount, price, type, transactionId) VALUES ($amount, $price, $type, strval($tid))"));
+        dbQuery("INSERT INTO okcoinTradeBook(price, amount, type, transactionId) VALUES ($amount, $price, $type, $tid");
+        echo(dbQuery("INSERT INTO okcoinTradeBook(amount, price, type, transactionId) VALUES ($amount, $price, $type, $tid)"));
 		}
 		return $tInfo;
 	}
