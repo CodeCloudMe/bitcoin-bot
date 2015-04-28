@@ -7,7 +7,7 @@
 	ini_set('display_errors',1);  error_reporting(E_ALL); 
 
 
-	$resp = getBook();
+	$resp = getTradeBook();
 
 
 	echo(json_encode($resp));
