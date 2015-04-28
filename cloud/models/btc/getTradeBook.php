@@ -15,6 +15,7 @@
 	function getTradeBook(){
 		$info = file_get_contents("https://www.okcoin.com/api/v1/trades.do?symbol=btc_usd");
 		$tInfo = json_decode($info, true);
+        echo (count($tInfo));
 		for($i=0; $i < count($tInfo); $i++){
 
             $amount = $tInfo[$i]['amount'];
