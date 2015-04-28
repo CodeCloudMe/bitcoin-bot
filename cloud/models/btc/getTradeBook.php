@@ -21,7 +21,7 @@
             $price = $tInfo[$i]['price'];
             $type = $tInfo[$i]['type'];
             $tid = $tInfo[$i]['tid'];
-            echo($amount, $price, $type, $tid)
+            echo($amount, $price, $type, $tid);
 
         
         dbQuery("INSERT INTO okcoinTradeBook(price, amount, type, transactionId) VALUES ($amount, $price, $type, $tid)");
