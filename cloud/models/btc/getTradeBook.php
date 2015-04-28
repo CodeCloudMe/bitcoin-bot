@@ -29,7 +29,7 @@
 
         }
         
-        dbQuery("INSERT INTO okcoinTradeBook(amount, price, type, tid) VALUES ($amount, $price, $type, $tid)");
+        dbQuery("INSERT INTO okcoinTradeBook(amount, price, type, tid) VALUES ($amount, $price, '$type', $tid)");
         echo("INSERT INTO okcoinTradeBook(amount, price, type, tid) VALUES ($amount, $price, $type, $tid)");
 		}
 			
