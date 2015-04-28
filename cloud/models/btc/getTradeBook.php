@@ -20,7 +20,6 @@
 		for($i=0; $i < count($tInfo); $i++){
         try{
             $amount = $tInfo[$i]['amount'];
-            echo($amount);
             $price = $tInfo[$i]['price'];
             $type = $tInfo[$i]['type'];
             $tid = $tInfo[$i]['tid'];
