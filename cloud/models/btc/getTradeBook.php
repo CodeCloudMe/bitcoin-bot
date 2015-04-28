@@ -19,10 +19,10 @@
 		$tInfo = json_decode($info, true);
 		for($i=0; $i < count($tInfo); $i++){
         try{
-            $amount = $tInfo['amount'][$i];
-            $price = $tInfo['price'][$i];
-            $type = $tInfo['type'][$i];
-            $tid = $tInfo['tid'][$i];
+            $amount = $tInfo[$i]['amount'];
+            $price = $tInfo[$i]['price'];
+            $type = $tInfo[$i]['type'];
+            $tid = $tInfo[$i]['tid'];
         }
         
         catch(exception $e){
