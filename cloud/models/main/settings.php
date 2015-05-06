@@ -7,6 +7,7 @@ $username= "adminllTANJS";
 $dbPassword = "P6Q1V-Tjd2jb";
 
 //keep database as BTC
+
 $database= "bitcoinbot";
 
 ?>
