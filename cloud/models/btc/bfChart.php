@@ -19,9 +19,6 @@
 
 	function getData(){
 	
-
-		
-		
 		$resp = dbMassData("SELECT * FROM okcoinPrices ORDER BY timestamp DESC");
 		$allResp = array();
 		$allResp[0] =  $resp;

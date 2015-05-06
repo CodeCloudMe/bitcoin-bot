@@ -1,5 +1,6 @@
 <?php
 //your username here for MYSQL
+
 $username= "adminllTANJS";
 
 //your password here for MYSQL
