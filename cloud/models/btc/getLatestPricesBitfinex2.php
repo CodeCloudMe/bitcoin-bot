@@ -30,9 +30,9 @@
 			$volume = $tInfo['volume'];
 
 
-			dbQuery("INSERT INTO bitfinexPrices2 (price, bid, ask, volume) VALUES ($price, $bid, $ask, $volume)");
+			dbQuery("INSERT INTO bitfinixPrices (price, bid, ask, volume) VALUES ($price, $bid, $ask, $volume)");
 			
-		echo("INSERT INTO bitfinexPrices2 (price, bid, ask, volume) VALUES ($price, $bid, $ask, $volume)");
+		echo("INSERT INTO bitfinixPrices (price, bid, ask, volume) VALUES ($price, $bid, $ask, $volume)");
 
 		//return true  
 		return $tInfo;
