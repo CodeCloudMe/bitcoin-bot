@@ -23,7 +23,7 @@
 		$bitfinex = dbMassData("SELECT * FROM bitfinexPrices ORDER BY timestamp DESC");
 		$allResp = array();
 		$allResp[0] =  $okcoin;
-		$allResp[1] =  $bitfinix;
+		$allResp[1] =  $bitfinex;
 
 		return $allResp;
 	}
