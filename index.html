@@ -22,8 +22,15 @@ function getData(){
         ockoinPrices = [];
         okcoinBids = [];
         okcoinAsks=[];
+
+        bitfinexPrices = [];
+        bitfinexBids = [];
+        bitfinexAsks = [];
+
         
         resp[0].reverse();
+        resp[1].reverse();
+
         //resp.reverse();
         //startTime = new Date(resp[0]['timestamp']).getTime();
         for (i in resp[0]){
@@ -31,17 +38,24 @@ function getData(){
             okcoinBids.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['bid'])]);
             okcoinAsks.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['ask'])]);
         }
-        getChart(ockoinPrices, okcoinBids, okcoinAsks);
+
+        for (i in resp[0]){
+            ockoinPrices.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['price'])]);
+            okcoinBids.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['bid'])]);
+            okcoinAsks.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['ask'])]);
+        }
+
+        getChart(ockoinPrices, okcoinBids, okcoinAsks, bitfinexPrices, bitfinexBids, bitfinexAsks);
     })
 }
-function  getChart(prices, bidPrices, askPrices) {
+function  getChart(ockoinPrices, okcoinBids, okcoinAsks, bitfinexPrices, bitfinexBids, bitfinexAsks) {
     $('#container').highcharts({
         chart: {
             type: 'spline',
             zoomType:'x'
         },
         title: {
-            text: 'Okcoin  prices'
+            text: 'Okcoin and Bitfinex prices'
         },
         subtitle: {
             text: 'Yup'
@@ -82,7 +96,7 @@ function  getChart(prices, bidPrices, askPrices) {
         },
         series: [{
             name: 'Okcoin',
-            data: prices
+            data: ockoinPrices
         },
        /* {
             name: 'Okcoin Ask',
@@ -92,6 +106,12 @@ function  getChart(prices, bidPrices, askPrices) {
             name: 'Okcoin Bids',
             data: bidPrices
         },*/
+
+        {
+            name: 'Bitfinex',
+            data: bitfinexPrices
+        },
+
         //add another here {name: 'ddd', data:lah}
         ],
         navigation: {
