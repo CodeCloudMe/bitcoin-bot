@@ -1,3 +1,4 @@
+
 <html>
 
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -7,64 +8,39 @@
 
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
+
+
+
 <script>
-
 $(window).load(init);
-
 function init(){
-    getData();
+     getData();
     //getChart();
 }
-
 function getData(){
     $.getJSON('/cloud/models/btc/bfChart.php', function(resp){
-
-    allOkcoinPrices = [];
-	allOkcoinBids = [];
-	allOkcoinAsks=[];
-
-    allBitfinexPrices = [];
-	allBitfinexBids = [];
-	allBitfinexAsks=[];
-
-    resp[0].reverse();
-    resp[1].reverse();
-
-	//resp.reverse();
-
-	//startTime = new Date(resp[0]['timestamp']).getTime();
-
-
-	for (i in resp[0]){
-
-        allOkcoinPrices.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['price'])]);
-	    allOkcoinBids.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['bid'])]);
-	    allOkcoinAsks.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['ask'])]);
-
-		}
-	
-	for (i in resp[1]){
-
-        allBitfinexPrices.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['price'])]);
-	    allBitfinexBids.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['bid'])]);
-	    allBitfinexAsks.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['ask'])]);
-
-		}
-
-    getChart(allOkcoinPrices, allOkcoinBids, allOkcoinAsks, allKorbitPrices, allKorbitBids, allKorbitAsks, allBitfinexPrices, allBitfinexBids, allBitfinexAsks);
-
-	})
-};
-
-
-function  getChart(OkcoinPrices, OkcoinBids, OkcoinAsks, KorbitPrices, KorbitBids, KorbitAsks, BitfinexPrices, BitfinexBids, BitfinexAsks) {
+                allPrices = [];
+        allBids = [];
+        allAsks=[];
+        resp[0].reverse();
+        //resp.reverse();
+        //startTime = new Date(resp[0]['timestamp']).getTime();
+        for (i in resp[0]){
+            allPrices.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['price'])]);
+            allBids.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['bid'])]);
+            allAsks.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['ask'])]);
+        }
+        getChart(allPrices, allBids, allAsks);
+    })
+}
+function  getChart(prices, bidPrices, askPrices) {
     $('#container').highcharts({
         chart: {
             type: 'spline',
             zoomType:'x'
         },
         title: {
-            text: 'Okcoin, Korbit and Bitfinex  prices'
+            text: 'Okcoin  prices'
         },
         subtitle: {
             text: 'Yup'
@@ -103,57 +79,20 @@ function  getChart(OkcoinPrices, OkcoinBids, OkcoinAsks, KorbitPrices, KorbitBid
                // pointStart: startTimestamp
             }
         },
-
         series: [{
             name: 'Okcoin',
-            data: OkcoinPrices
-
+            data: prices
         },
        /* {
             name: 'Okcoin Ask',
-            data: OkcoinAsks
-
+            data: askPrices
         },
         {
             name: 'Okcoin Bids',
-            data: OkcoinBids
-
+            data: bidPrices
         },*/
-
-        name: 'Korbit',
-            data: KorbitPrices
-
-        },
-       /* {
-            name: 'Korbit Ask',
-            data: KorbitAsks
-
-        },
-        {
-            name: 'Korbit Bids',
-            data: KorbitBids
-
-        },*/
-
-        name: 'Bitfinex',
-            data: BitfinexPrices
-
-        },
-       /* {
-            name: 'Bitfinex Ask',
-            data: BitfinexAsks
-
-        },
-        {
-            name: 'Bitfinex Bids',
-            data: BitfinexBids
-
-        },*/
-
         //add another here {name: 'ddd', data:lah}
-
         ],
-
         navigation: {
             menuItemStyle: {
                 fontSize: '10px'
@@ -161,7 +100,6 @@ function  getChart(OkcoinPrices, OkcoinBids, OkcoinAsks, KorbitPrices, KorbitBid
         }
     });
 };
-
 </script>
 
 </html>

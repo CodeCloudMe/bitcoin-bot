@@ -1,1 +1,2 @@
-wget --quiet -O - 'https://btcrecordz-bitrader.rhcloud.com/cloud/models/btc/getLatestPricesBitfinexOrderbook2.php'
+wget --quiet -O - 'http://bitcoinbot-chee.rhcloud.com/cloud/models/btc/getOrderBookOkcoin.php';
+wget --quiet -O - 'http://bitcoinbot-chee.rhcloud.com/cloud/models/btc/getTradesOkcoin.php';

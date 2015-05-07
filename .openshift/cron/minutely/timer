@@ -1,0 +1,2 @@
+wget --quiet -O - 'http://bitcoinbot-chee.rhcloud.com/cloud/models/btc/getLatestPricesOkcoin.php';
+wget --quiet -O - 'http://bitcoinbot-chee.rhcloud.com/cloud/models/btc/getLatestPricesBitfinex.php';
