@@ -57,10 +57,10 @@ function getData(){
         }
 
 
-        getChart(ockoinPrices, okcoinBids, okcoinAsks, bitfinexPrices, bitfinexBids, bitfinexAsks);
+        getChart(ockoinPrices, okcoinBids, okcoinAsks, bitfinexPrices, bitfinexBids, bitfinexAsks, bitstampPrices, bitstampBids, bitstampAsks);
     })
 }
-function  getChart(ockoinPrices, okcoinBids, okcoinAsks, bitfinexPrices, bitfinexBids, bitfinexAsks) {
+function  getChart(ockoinPrices, okcoinBids, okcoinAsks, bitfinexPrices, bitfinexBids, bitfinexAsks, bitstampPrices, bitfinexBids, bitstampAsks) {
     $('#container').highcharts({
         chart: {
             type: 'spline',
@@ -122,6 +122,11 @@ function  getChart(ockoinPrices, okcoinBids, okcoinAsks, bitfinexPrices, bitfine
         {
             name: 'Bitfinex',
             data: bitfinexPrices
+        },
+
+        {
+            name: 'Bitstamp',
+            data: bitstampPrices
         },
 
         //add another here {name: 'ddd', data:lah}
