@@ -19,18 +19,19 @@ function init(){
 }
 function getData(){
     $.getJSON('/cloud/models/btc/bfChart.php', function(resp){
-                allPrices = [];
-        allBids = [];
-        allAsks=[];
+        ockoinPrices = [];
+        okcoinBids = [];
+        okcoinAsks=[];
+        
         resp[0].reverse();
         //resp.reverse();
         //startTime = new Date(resp[0]['timestamp']).getTime();
         for (i in resp[0]){
-            allPrices.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['price'])]);
-            allBids.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['bid'])]);
-            allAsks.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['ask'])]);
+            ockoinPrices.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['price'])]);
+            okcoinBids.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['bid'])]);
+            okcoinAsks.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['ask'])]);
         }
-        getChart(allPrices, allBids, allAsks);
+        getChart(ockoinPrices, okcoinBids, okcoinAsks);
     })
 }
 function  getChart(prices, bidPrices, askPrices) {
