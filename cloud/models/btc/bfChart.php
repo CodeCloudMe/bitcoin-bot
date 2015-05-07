@@ -21,9 +21,11 @@
 	
 		$okcoin = dbMassData("SELECT * FROM okcoinPrices WHERE timestamp > '2015-05-07' ORDER BY timestamp DESC");
 		$bitfinex = dbMassData("SELECT * FROM bitfinexPrices WHERE timestamp > '2015-05-07' ORDER BY timestamp DESC");
+		$bitstamp = dbMassData("SELECT * FROM bitstampPrices WHERE timestamp > '2015-05-07' ORDER BY timestamp DESC");
 		$allResp = array();
 		$allResp[0] =  $okcoin;
 		$allResp[1] =  $bitfinex;
+		$allResp[2] =  $bitstamp;
 
 		return $allResp;
 	}

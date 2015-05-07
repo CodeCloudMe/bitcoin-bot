@@ -27,9 +27,14 @@ function getData(){
         bitfinexBids = [];
         bitfinexAsks = [];
 
+        bitstampPrices = [];
+        bitstampBids = [];
+        bitstampAsks = [];
+
         
         resp[0].reverse();
         resp[1].reverse();
+        resp[2].reverse();
 
         //resp.reverse();
         //startTime = new Date(resp[0]['timestamp']).getTime();
@@ -39,11 +44,18 @@ function getData(){
             okcoinAsks.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['ask'])]);
         }
 
-        for (i in resp[0]){
-            ockoinPrices.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['price'])]);
-            okcoinBids.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['bid'])]);
-            okcoinAsks.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['ask'])]);
+        for (i in resp[1]){
+            ockoinPrices.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['price'])]);
+            okcoinBids.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['bid'])]);
+            okcoinAsks.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['ask'])]);
         }
+        
+        for (i in resp[2]){
+            bitstampPrices.push([new Date(resp[2][i]['timestamp']).getTime(), parseFloat(resp[2][i]['price'])]);
+            bitstampBids.push([new Date(resp[2][i]['timestamp']).getTime(), parseFloat(resp[2][i]['bid'])]);
+            bitstampAsks.push([new Date(resp[2][i]['timestamp']).getTime(), parseFloat(resp[2][i]['ask'])]);
+        }
+
 
         getChart(ockoinPrices, okcoinBids, okcoinAsks, bitfinexPrices, bitfinexBids, bitfinexAsks);
     })
