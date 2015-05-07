@@ -19,21 +19,21 @@ function init(){
 function getData(){
     $.getJSON('/cloud/models/btc/bfChart.php', function(resp){
 
-        allOkcoinPrices = [];
+    allOkcoinPrices = [];
 	allOkcoinBids = [];
 	allOkcoinAsks=[];
        
-        allKorbitPrices = [];
+    allKorbitPrices = [];
 	allKorbitBids = [];
 	allKorbitAsks=[];
 
-        allBitfinixPrices = [];
+    allBitfinixPrices = [];
 	allBitfinixBids = [];
 	allBitfinixAsks=[];
 
-        resp[0].reverse();
-        resp[1].reverse();
-        resp[2].reverse();
+    resp[0].reverse();
+    resp[1].reverse();
+    resp[2].reverse();
 
 	//resp.reverse();
 
@@ -42,7 +42,7 @@ function getData(){
 
 	for (i in resp[0]){
 
-            allOkcoinPrices.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['price'])]);
+        allOkcoinPrices.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['price'])]);
 	    allOkcoinBids.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['bid'])]);
 	    allOkcoinAsks.push([new Date(resp[0][i]['timestamp']).getTime(), parseFloat(resp[0][i]['ask'])]);
 
@@ -50,7 +50,7 @@ function getData(){
 	
 	for (i in resp[1]){
 
-            allKoritPrices.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['price'])]);
+        allKoritPrices.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['price'])]);
 	    allKorbitBids.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['bid'])]);
 	    allKorbitAsks.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['ask'])]);
 
@@ -58,16 +58,16 @@ function getData(){
 
 	for (i in resp[2]){
 
-            allBitfinixPrices.push([new Date(resp[2][i]['timestamp']).getTime(), parseFloat(resp[2][i]['price'])]);
+        allBitfinixPrices.push([new Date(resp[2][i]['timestamp']).getTime(), parseFloat(resp[2][i]['price'])]);
 	    allBitfinixBids.push([new Date(resp[2][i]['timestamp']).getTime(), parseFloat(resp[2][i]['bid'])]);
 	    allBitfinixAsks.push([new Date(resp[2][i]['timestamp']).getTime(), parseFloat(resp[2][i]['ask'])]);
 
 		}
 
-        getChart(allOkcoinPrices, allOkcoinBids, allOkcoinAsks, allKorbitPrices, allKorbitBids, allKorbitAsks, allBitfinixPrices, allBitfinixBids, allBitfinixAsks);
+    getChart(allOkcoinPrices, allOkcoinBids, allOkcoinAsks, allKorbitPrices, allKorbitBids, allKorbitAsks, allBitfinixPrices, allBitfinixBids, allBitfinixAsks);
 
 	})
-}
+};
 
 
 function  getChart(OkcoinPrices, OkcoinBids, OkcoinAsks, KorbitPrices, KorbitBids, KorbitAsks, BitfinixPrices, BitfinixBids, BitfinixAsks) {
@@ -133,8 +133,7 @@ function  getChart(OkcoinPrices, OkcoinBids, OkcoinAsks, KorbitPrices, KorbitBid
 
         },*/
 
-        series: [{
-            name: 'Korbit',
+        name: 'Korbit',
             data: KorbitPrices
 
         },
@@ -145,12 +144,11 @@ function  getChart(OkcoinPrices, OkcoinBids, OkcoinAsks, KorbitPrices, KorbitBid
         },
         {
             name: 'Korbit Bids',
-            data: KorbitPrices
+            data: KorbitBids
 
         },*/
 
-        series: [{
-            name: 'Bitfinix',
+        name: 'Bitfinix',
             data: BitfinixPrices
 
         },
@@ -161,13 +159,14 @@ function  getChart(OkcoinPrices, OkcoinBids, OkcoinAsks, KorbitPrices, KorbitBid
         },
         {
             name: 'Bitfinix Bids',
-            data: BitfinixPrices
+            data: BitfinixBids
 
         },*/
 
         //add another here {name: 'ddd', data:lah}
 
         ],
+
         navigation: {
             menuItemStyle: {
                 fontSize: '10px'
