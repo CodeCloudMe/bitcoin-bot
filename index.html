@@ -22,18 +22,13 @@ function getData(){
     allOkcoinPrices = [];
 	allOkcoinBids = [];
 	allOkcoinAsks=[];
-       
-    allKorbitPrices = [];
-	allKorbitBids = [];
-	allKorbitAsks=[];
 
-    allBitfinixPrices = [];
-	allBitfinixBids = [];
-	allBitfinixAsks=[];
+    allBitfinexPrices = [];
+	allBitfinexBids = [];
+	allBitfinexAsks=[];
 
     resp[0].reverse();
     resp[1].reverse();
-    resp[2].reverse();
 
 	//resp.reverse();
 
@@ -50,34 +45,26 @@ function getData(){
 	
 	for (i in resp[1]){
 
-        allKoritPrices.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['price'])]);
-	    allKorbitBids.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['bid'])]);
-	    allKorbitAsks.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['ask'])]);
+        allBitfinexPrices.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['price'])]);
+	    allBitfinexBids.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['bid'])]);
+	    allBitfinexAsks.push([new Date(resp[1][i]['timestamp']).getTime(), parseFloat(resp[1][i]['ask'])]);
 
 		}
 
-	for (i in resp[2]){
-
-        allBitfinixPrices.push([new Date(resp[2][i]['timestamp']).getTime(), parseFloat(resp[2][i]['price'])]);
-	    allBitfinixBids.push([new Date(resp[2][i]['timestamp']).getTime(), parseFloat(resp[2][i]['bid'])]);
-	    allBitfinixAsks.push([new Date(resp[2][i]['timestamp']).getTime(), parseFloat(resp[2][i]['ask'])]);
-
-		}
-
-    getChart(allOkcoinPrices, allOkcoinBids, allOkcoinAsks, allKorbitPrices, allKorbitBids, allKorbitAsks, allBitfinixPrices, allBitfinixBids, allBitfinixAsks);
+    getChart(allOkcoinPrices, allOkcoinBids, allOkcoinAsks, allKorbitPrices, allKorbitBids, allKorbitAsks, allBitfinexPrices, allBitfinexBids, allBitfinexAsks);
 
 	})
 };
 
 
-function  getChart(OkcoinPrices, OkcoinBids, OkcoinAsks, KorbitPrices, KorbitBids, KorbitAsks, BitfinixPrices, BitfinixBids, BitfinixAsks) {
+function  getChart(OkcoinPrices, OkcoinBids, OkcoinAsks, KorbitPrices, KorbitBids, KorbitAsks, BitfinexPrices, BitfinexBids, BitfinexAsks) {
     $('#container').highcharts({
         chart: {
             type: 'spline',
             zoomType:'x'
         },
         title: {
-            text: 'Okcoin, Korbit and Bitfinix  prices'
+            text: 'Okcoin, Korbit and Bitfinex  prices'
         },
         subtitle: {
             text: 'Yup'
@@ -148,18 +135,18 @@ function  getChart(OkcoinPrices, OkcoinBids, OkcoinAsks, KorbitPrices, KorbitBid
 
         },*/
 
-        name: 'Bitfinix',
-            data: BitfinixPrices
+        name: 'Bitfinex',
+            data: BitfinexPrices
 
         },
        /* {
-            name: 'Bitfinix Ask',
-            data: BitfinixAsks
+            name: 'Bitfinex Ask',
+            data: BitfinexAsks
 
         },
         {
-            name: 'Bitfinix Bids',
-            data: BitfinixBids
+            name: 'Bitfinex Bids',
+            data: BitfinexBids
 
         },*/
 

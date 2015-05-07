@@ -20,12 +20,10 @@
 	function getData(){
 	
 		$okcoin = dbMassData("SELECT * FROM okcoinPrices ORDER BY timestamp DESC");
-		$korbit = dbMassData("SELECT * FROM KorbitPrices ORDER BY timestamp DESC");
-		$bitfinix = dbMassData("SELECT * FROM bitfinixPrices ORDER BY timestamp DESC");
+		$bitfinex = dbMassData("SELECT * FROM bitfinexPrices ORDER BY timestamp DESC");
 		$allResp = array();
 		$allResp[0] =  $okcoin;
-		$allResp[1] =  $korbit;
-		$allResp[2] =  $bitfinix;
+		$allResp[1] =  $bitfinix;
 
 		return $allResp;
 	}
