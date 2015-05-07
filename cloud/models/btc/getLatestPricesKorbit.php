@@ -27,9 +27,9 @@
 			$bid = $tInfo['bid'];
 			$volume = $tInfo['volume'];
 
-            dbQuery("INSERT INTO bitstampPrices (price, bid, ask, volume) VALUES ($price, $bid, $ask, $volume)");
+            dbQuery("INSERT INTO KorbitPrices (price, bid, ask, volume) VALUES ($price, $bid, $ask, $volume)");
 			
-            echo("INSERT INTO bitstampPrices (price, bid, ask, volume) VALUES ($price, $bid, $ask, $volume)");
+            echo("INSERT INTO KorbitPrices (price, bid, ask, volume) VALUES ($price, $bid, $ask, $volume)");
 
 		//return true  
 
