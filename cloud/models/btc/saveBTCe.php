@@ -11,7 +11,7 @@
 
 
 
-	$resp = getData(volume, price, time);
+	$resp = getData($volume, $price, $time);
 
 
 	echo(json_encode($resp));
@@ -21,10 +21,10 @@
 
 	//prop
 
-	function getData(volume, price, time){
+	function getData($volume, $price, $time){
 	
 
-		dbQuery("INSERT INTO btce (volume, price, time) VALUES (volume, price, 'time')");
+		dbQuery("INSERT INTO btce (volume, price, time) VALUES ($volume, $price, '$time')");
 
 		return array("status"=>"success");
 		
